@@ -18,7 +18,7 @@ namespace ConsignmentShopUI
             InitializeComponent();
             setupData();
 
-            ItemBinding.DataSource = store.Items;
+            ItemBinding.DataSource = store.Items.Where(x => x.sold == false).ToList();
             itemListBox.DataSource = ItemBinding;
 
             itemListBox.DisplayMember = "Display";
@@ -27,7 +27,9 @@ namespace ConsignmentShopUI
             cartBinding.DataSource = shoppingcartData;
             shoppingCartListBox.DataSource = cartBinding;
 
-            shoppingCartListBox.DisplayMember = "";
+            shoppingCartListBox.DisplayMember = "Display";
+            shoppingCartListBox.ValueMember = "Display";
+
 
         }
 
@@ -99,11 +101,6 @@ namespace ConsignmentShopUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -112,6 +109,28 @@ namespace ConsignmentShopUI
         private void shoppingCartListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void addtoCart_Click(object sender, EventArgs e)
+        {
+            Item selectedItem = (Item)itemListBox.SelectedItem;
+            shoppingcartData.Add(selectedItem);
+
+            cartBinding.ResetBindings(false);
+
+
+        }
+
+        private void purchaseButton_Click(object sender, EventArgs e)
+        {
+            foreach (Item item in shoppingcartData)
+            {
+                item.sold = true;
+            }
+
+            ItemBinding.DataSource = store.Items.Where(x => x.sold == false).ToList();
+            shoppingcartData.Clear();
+            cartBinding.ResetBindings(false);
         }
     }
 }
