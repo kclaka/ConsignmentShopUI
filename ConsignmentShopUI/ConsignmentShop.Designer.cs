@@ -36,7 +36,7 @@
             this.shoppingCartItemLabel = new System.Windows.Forms.Label();
             this.purchaseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.vendorListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // headerText
@@ -117,18 +117,19 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(89, 382);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Store Items";
+            this.label1.Text = "Vendors";
             // 
-            // listBox1
+            // vendorListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(93, 405);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(266, 204);
-            this.listBox1.TabIndex = 7;
+            this.vendorListBox.FormattingEnabled = true;
+            this.vendorListBox.ItemHeight = 20;
+            this.vendorListBox.Location = new System.Drawing.Point(93, 405);
+            this.vendorListBox.Name = "vendorListBox";
+            this.vendorListBox.Size = new System.Drawing.Size(266, 204);
+            this.vendorListBox.TabIndex = 7;
+            this.vendorListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
             // ConsignmentShop
             // 
@@ -136,7 +137,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.vendorListBox);
             this.Controls.Add(this.purchaseButton);
             this.Controls.Add(this.shoppingCartItemLabel);
             this.Controls.Add(this.shoppingCartListBox);
@@ -164,7 +165,7 @@
         private System.Windows.Forms.Label shoppingCartItemLabel;
         private System.Windows.Forms.Button purchaseButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox vendorListBox;
     }
 }
 
